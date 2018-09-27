@@ -1,0 +1,48 @@
+<div>
+  <h4>Add A Review For {{ oneMovie.title }}:</h4>
+  <form (submit)="addReview()">
+    <div class="form-group">
+      <label for="reviewer">Your Name:</label>
+      <input type="text" class="form-control" name="reviewer" [(ngModel)]="updateMovie.reviewer"
+      required
+      #reviewer="ngModel"
+      minlength="3">
+    </div>
+    <div *ngIf="reviewer.invalid" class="alert alert-danger" role="alert">
+      <div *ngIf="reviewer.errors.required">
+        <strong>Your Name Is Required</strong>
+      </div>
+      <div *ngIf="reviewer.errors.minlength">
+        <strong>Your Name Must Be At Least 3 Characters</strong>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="stars">Stars:</label>
+      <select class="form-control" id="stars" name="stars" [(ngModel)]="updateMovie.stars">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="review">Your Review:</label>
+      <textarea type="text" class="form-control" name="review" [(ngModel)]="updateMovie.review"
+        required
+        #review="ngModel"
+        minlength="3">
+      </textarea>
+      <div *ngIf="review.invalid" class="alert alert-danger" role="alert">
+        <div *ngIf="review.errors.required">
+          <strong>A Review Is Required</strong>
+        </div>
+        <div *ngIf="review.errors.minlength">
+          <strong>Your Review Must Be At Least 3 Characters</strong>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Add Review</button>
+    <button [routerLink]="['/movies']" rows="20" class="btn btn-danger">Cancel</button>
+  </form>
+</div>

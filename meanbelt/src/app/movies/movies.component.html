@@ -1,0 +1,26 @@
+<div *ngIf="selected" style="text-align:center">
+    <button [routerLink]="['new']" class="btn btn-primary">Add A New Movie</button>
+    <h4>Movie List:</h4>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Movie Title</th>
+          <th scope="col">Action</th>
+          <th scope="col">Avg Star Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of allMovies">
+          <td>{{ m.title }}</td>
+          <td>
+            <button [routerLink]="[m._id]" type="button" class="btn btn-success">Read Reviews</button>
+            <button [routerLink]="[m._id, 'review']" type="button" class="btn btn-info">Write Review</button>
+          </td>
+          <td>
+            {{ m.avgStars }}
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>
+<router-outlet (activated)="childSwitch()" (deactivate)="childSwitch()"></router-outlet>

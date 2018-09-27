@@ -1,0 +1,23 @@
+<div style="text-align:center">
+    <button [routerLink]="['/movies']" type="button" class="btn btn-success">Back To Movies</button>
+    <button (click)="deleteMovie()" class="btn btn-danger">Delete This Movie</button>
+    <h4>Reviews for {{ oneMovie.title }}:</h4>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Reviewer</th>
+          <th scope="col">Stars</th>
+          <th scope="col">Reviews</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let i of range">
+            <td>{{ allReviewers[i] }}</td>
+            <td>{{ allStars[i] }}</td>
+            <td>{{ allReviews[i] }}</td>
+            <td><button (click)="deleteReview(i)" class="btn btn-danger">Delete This Review</button></td>
+          </tr>
+      </tbody>
+  </table>
+</div>
